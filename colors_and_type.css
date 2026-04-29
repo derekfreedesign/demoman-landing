@@ -1,0 +1,255 @@
+/* =========================================================================
+   DEMOMAN DESIGN SYSTEM — Colors & Type
+   Demolition game by Unframed Games. Dark UI, hot accents, pixel-display.
+   ========================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=block");
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/JetBrainsMono-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* --- Brand core --------------------------------------------------------- */
+  /* The detonator-yellow / warning-stripe yellow that lives on the bomb crate */
+  --dm-yellow: #FFD11A;       /* primary CTA */
+  --dm-yellow-hi: #FFE34D;    /* CTA hover (lighter) */
+  --dm-yellow-lo: #E0B300;    /* CTA press / shadow ledge */
+
+  /* The fuse-red bracket from the wordmark + warning stripe */
+  --dm-red: #E53935;          /* destructive / hot accent */
+  --dm-red-hi: #FF5A55;
+  --dm-red-lo: #B71C1C;
+
+  /* Spark orange from explosions */
+  --dm-orange: #FF8A1F;
+  --dm-orange-hi: #FFA64D;
+
+  /* Asphalt / city night palette --------------------------------------------
+     Sampled from the Steam capsule — desaturated cool greys with a subtle blue
+     bias, not pure black. Use these for surfaces, NOT pure #000 except print. */
+  --dm-bg-0: #0B0D10;         /* page (deepest) */
+  --dm-bg-1: #14181D;         /* surface base */
+  --dm-bg-2: #1C2128;         /* card */
+  --dm-bg-3: #262C35;         /* card hover / raised */
+  --dm-bg-4: #333A45;         /* elevated / border-strong */
+  --dm-bg-5: #4A5260;         /* divider strong */
+
+  /* Foreground (text) */
+  --dm-fg-1: #F4F5F7;         /* primary copy on dark */
+  --dm-fg-2: #BFC4CC;         /* secondary copy */
+  --dm-fg-3: #7C8593;         /* tertiary / metadata */
+  --dm-fg-4: #4A5260;         /* disabled */
+  --dm-fg-on-yellow: #14181D; /* text on yellow CTA */
+  --dm-fg-on-red: #FFFFFF;
+
+  /* Borders / hairlines */
+  --dm-border: #2A313B;       /* default */
+  --dm-border-strong: #3A434F;
+  --dm-border-hot: var(--dm-yellow); /* focus ring */
+
+  /* Semantic */
+  --dm-success: #4ADE80;
+  --dm-warning: var(--dm-yellow);
+  --dm-danger:  var(--dm-red);
+  --dm-info:    #5BB3FF;
+
+  /* --- Type --------------------------------------------------------------- */
+  --dm-font-display: "Press Start 2P", "VT323", monospace;
+  --dm-font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --dm-font-body:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Scale — pixel display fonts read big; bodies stay punchy on mono */
+  --dm-text-xs:   12px;
+  --dm-text-sm:   13px;
+  --dm-text-base: 15px;
+  --dm-text-md:   17px;
+  --dm-text-lg:   20px;
+  --dm-text-xl:   24px;
+  --dm-text-2xl:  32px;
+  --dm-text-3xl:  44px;
+  --dm-text-4xl:  64px;
+  --dm-text-5xl:  88px;
+  --dm-text-6xl:  120px;
+
+  /* Line heights — display tight, body relaxed */
+  --dm-lh-tight:   1.0;
+  --dm-lh-snug:    1.15;
+  --dm-lh-normal:  1.45;
+  --dm-lh-loose:   1.7;
+
+  /* Tracking — display sits chunky and even, body slightly open */
+  --dm-tracking-display: 0.02em;
+  --dm-tracking-caps:    0.14em;
+  --dm-tracking-mono:    0;
+
+  /* --- Spacing & radius --------------------------------------------------- */
+  /* 4px base. The blocky aesthetic discourages large radii — keep things crisp. */
+  --dm-space-1:  4px;
+  --dm-space-2:  8px;
+  --dm-space-3:  12px;
+  --dm-space-4:  16px;
+  --dm-space-5:  24px;
+  --dm-space-6:  32px;
+  --dm-space-7:  48px;
+  --dm-space-8:  64px;
+  --dm-space-9:  96px;
+  --dm-space-10: 128px;
+
+  --dm-radius-0: 0px;         /* default — keep it sharp */
+  --dm-radius-1: 2px;         /* hairline soften */
+  --dm-radius-2: 4px;         /* buttons / chips */
+  --dm-radius-3: 6px;         /* cards (max) */
+
+  /* --- Elevation: hard "ledge" shadows, not soft blurs -------------------- */
+  --dm-shadow-ledge:  0 4px 0 0 rgba(0,0,0,0.6);
+  --dm-shadow-ledge-y:0 4px 0 0 var(--dm-yellow-lo);
+  --dm-shadow-card:   0 2px 0 0 rgba(0,0,0,0.5), 0 12px 32px -12px rgba(0,0,0,0.6);
+  --dm-shadow-pop:    0 8px 0 0 rgba(0,0,0,0.55), 0 24px 48px -16px rgba(0,0,0,0.7);
+  --dm-shadow-glow-y: 0 0 0 1px var(--dm-yellow), 0 0 24px -2px rgba(255,209,26,0.45);
+  --dm-shadow-glow-r: 0 0 0 1px var(--dm-red),    0 0 24px -2px rgba(229,57,53,0.5);
+  --dm-shadow-inset:  inset 0 0 0 1px rgba(255,255,255,0.04);
+
+  /* Focus ring — bright, blocky, never subtle */
+  --dm-focus-ring: 0 0 0 3px var(--dm-yellow);
+}
+
+/* =========================================================================
+   Semantic typography styles — apply to the element name OR via .h1/.body etc.
+   ========================================================================= */
+
+html, body {
+  background: var(--dm-bg-0);
+  color: var(--dm-fg-1);
+  font-family: var(--dm-font-body);
+  font-size: var(--dm-text-base);
+  line-height: var(--dm-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display — Press Start 2P. Pixel font, render with crisp edges. */
+.dm-display, h1.dm-display, .dm-h1 {
+  font-family: var(--dm-font-display);
+  font-weight: 400;
+  font-size: var(--dm-text-5xl);
+  line-height: var(--dm-lh-tight);
+  letter-spacing: var(--dm-tracking-display);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  text-rendering: geometricPrecision;
+  image-rendering: pixelated;
+  text-transform: uppercase;
+  color: var(--dm-fg-1);
+}
+
+.dm-h1 { font-size: var(--dm-text-4xl); }
+.dm-h2 { font-family: var(--dm-font-display); font-weight: 400; font-size: var(--dm-text-3xl); line-height: var(--dm-lh-tight); letter-spacing: var(--dm-tracking-display); text-transform: uppercase; -webkit-font-smoothing: none; }
+.dm-h3 { font-family: var(--dm-font-display); font-weight: 400; font-size: var(--dm-text-2xl); line-height: var(--dm-lh-snug); letter-spacing: var(--dm-tracking-display); text-transform: uppercase; -webkit-font-smoothing: none; }
+.dm-h4 { font-family: var(--dm-font-mono);    font-weight: 700; font-size: var(--dm-text-lg); line-height: var(--dm-lh-snug); letter-spacing: var(--dm-tracking-caps); text-transform: uppercase; }
+
+/* Eyebrow / label — small mono caps with red bracket accent if desired */
+.dm-eyebrow {
+  font-family: var(--dm-font-mono);
+  font-weight: 700;
+  font-size: var(--dm-text-xs);
+  letter-spacing: var(--dm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--dm-yellow);
+}
+
+/* Body / lead */
+.dm-lead {
+  font-family: var(--dm-font-mono);
+  font-weight: 400;
+  font-size: var(--dm-text-md);
+  line-height: var(--dm-lh-loose);
+  color: var(--dm-fg-2);
+}
+.dm-body {
+  font-family: var(--dm-font-mono);
+  font-weight: 400;
+  font-size: var(--dm-text-base);
+  line-height: var(--dm-lh-normal);
+  color: var(--dm-fg-2);
+}
+.dm-small {
+  font-family: var(--dm-font-mono);
+  font-weight: 400;
+  font-size: var(--dm-text-sm);
+  line-height: var(--dm-lh-normal);
+  color: var(--dm-fg-3);
+}
+
+/* Inline utilities */
+.dm-mono   { font-family: var(--dm-font-mono); }
+.dm-code   { font-family: var(--dm-font-mono); font-weight: 500; background: var(--dm-bg-2); border: 1px solid var(--dm-border); padding: 1px 6px; border-radius: var(--dm-radius-1); color: var(--dm-yellow); }
+.dm-kbd    { font-family: var(--dm-font-mono); font-weight: 700; font-size: var(--dm-text-xs); background: var(--dm-bg-3); border: 1px solid var(--dm-border-strong); border-bottom-width: 2px; padding: 2px 6px; border-radius: var(--dm-radius-1); color: var(--dm-fg-1); text-transform: uppercase; }
+
+/* Native tag bindings */
+h1 { font-family: var(--dm-font-display); font-weight: 400; font-size: var(--dm-text-4xl); line-height: var(--dm-lh-tight); letter-spacing: var(--dm-tracking-display); text-transform: uppercase; -webkit-font-smoothing: none; margin: 0 0 var(--dm-space-4); }
+h2 { font-family: var(--dm-font-display); font-weight: 400; font-size: var(--dm-text-3xl); line-height: var(--dm-lh-tight); letter-spacing: var(--dm-tracking-display); text-transform: uppercase; -webkit-font-smoothing: none; margin: 0 0 var(--dm-space-3); }
+h3 { font-family: var(--dm-font-display); font-weight: 400; font-size: var(--dm-text-2xl); line-height: var(--dm-lh-snug); letter-spacing: var(--dm-tracking-display); text-transform: uppercase; -webkit-font-smoothing: none; margin: 0 0 var(--dm-space-3); }
+h4 { font-family: var(--dm-font-mono);    font-weight: 700; font-size: var(--dm-text-lg); line-height: var(--dm-lh-snug); letter-spacing: var(--dm-tracking-caps);    text-transform: uppercase; margin: 0 0 var(--dm-space-2); }
+p  { margin: 0 0 var(--dm-space-3); color: var(--dm-fg-2); }
+a  { color: var(--dm-yellow); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 80ms linear; }
+a:hover { border-bottom-color: var(--dm-yellow); }
+code { font-family: var(--dm-font-mono); color: var(--dm-yellow); }
+hr { border: 0; border-top: 1px solid var(--dm-border); margin: var(--dm-space-5) 0; }
+
+/* Selection — fuse red, yellow text */
+::selection { background: var(--dm-red); color: var(--dm-fg-1); }

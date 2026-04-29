@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Demoman — Unframed Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Demoman is a demolition sandbox by Unframed Games. Join the Discord while we cook.">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--dm-bg-0); }
+  #app { min-height: 100vh; }
+  * { box-sizing: border-box; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--dm-bg-1); }
+  ::-webkit-scrollbar-thumb { background: var(--dm-bg-4); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--dm-yellow); }
+  ::selection { background: var(--dm-red); color: #fff; }
+  html { scroll-behavior: smooth; }
+  a { border-bottom: none; }
+  button { font-family: inherit; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="hero.jsx"></script>
+<script type="text/babel" src="features.jsx"></script>
+<script type="text/babel" src="studio.jsx"></script>
+<script type="text/babel" src="connect.jsx"></script>
+
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "headline": "blow",
+    "showBadges": true,
+    "discordHref": "https://discord.gg/2FH6Yvuctz",
+    "eyebrowHero": "// In Development · Wishlist Soon",
+    "eyebrowFeatures": "// Gameplay Features",
+    "eyebrowScreenshots": "// Gameplay Footage",
+    "eyebrowStudio": "// Who we are",
+    "eyebrowSocial": "// Social Media",
+    "eyebrowNewsletter": "// newsletter",
+    "heroBody": "We're cooking. The Discord is where you watch the sausage get made — and occasionally tell us the sausage is on fire.",
+    "featHeading": "these arent ready oh god why are you showing it",
+    "feat01Title": "Gameplay Feature #1",
+    "feat01Body": "Something about leveling up.",
+    "feat02Title": "Gameplay Feature #2",
+    "feat02Body": "Something about the arsenal.",
+    "feat03Title": "Gameplay Feature #3",
+    "feat03Body": "Something about training.",
+    "feat01Img": "",
+    "feat02Img": "",
+    "feat03Img": "",
+    "shotsHeading": "Is there something before pre-alpha? these are that",
+    "studioHeading": "Unframed Games",
+    "studioBody1": " is an indie studio founded by a couple veterans and one guy who really doesn't know what he's doing. But he got to build the website. And hes also the most handsome.",
+    "studioBody2": "",
+    "bio01": "Systems architect. Some you need, some you don't.",
+    "bio02": "World-building and scope creep, personified.",
+    "bio03": "Idiot marketing and UI savant. Without the savant",
+    "socialHeading": "Watch us ruin it in real time",
+    "socialBody": "Devlogs, slow-mo demolition clips, and the occasional bug that's so dumb we shipped it. One handle everywhere:",
+    "newsletterHeading": "Feel like sharing?",
+    "newsletterBody": "Giving out your email is a big deal. To be honest you shouldn't even do it. But if you want to know whats up and are morbidly curious, why not give it a try?"
+  }/*EDITMODE-END*/;
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    return (
+      <div>
+        <TopNav discordHref={t.discordHref} />
+        <Hero
+          headline={t.headline}
+          showBadges={t.showBadges}
+          discordHref={t.discordHref}
+          heroBody={t.heroBody}
+          eyebrow={t.eyebrowHero}
+        />
+        <FeatureRow
+          eyebrow={t.eyebrowFeatures}
+          featHeading={t.featHeading}
+          feat01Title={t.feat01Title}
+          feat01Body={t.feat01Body}
+          feat02Title={t.feat02Title}
+          feat02Body={t.feat02Body}
+          feat03Title={t.feat03Title}
+          feat03Body={t.feat03Body}
+          feat01Img={t.feat01Img}
+          feat02Img={t.feat02Img}
+          feat03Img={t.feat03Img}
+        />
+        <Screenshots eyebrow={t.eyebrowScreenshots} shotsHeading={t.shotsHeading} />
+        <StudioAbout
+          eyebrow={t.eyebrowStudio}
+          studioHeading={t.studioHeading}
+          studioBody1={t.studioBody1}
+          studioBody2={t.studioBody2}
+          bio01={t.bio01}
+          bio02={t.bio02}
+          bio03={t.bio03}
+        />
+        <SocialRow
+          eyebrow={t.eyebrowSocial}
+          socialHeading={t.socialHeading}
+          socialBody={t.socialBody}
+        />
+        <Newsletter
+          eyebrow={t.eyebrowNewsletter}
+          newsletterHeading={t.newsletterHeading}
+          newsletterBody={t.newsletterBody}
+        />
+        <Footer />
+
+        <TweaksPanel title="Copy">
+          <TweakSection label="Hero" />
+          <TweakText label="Eyebrow" value={t.eyebrowHero} onChange={(v) => setTweak('eyebrowHero', v)} />
+          <TweakRadio
+            label="Headline"
+            value={t.headline}
+            options={[
+              { value: "blow", label: "Blow it up" },
+              { value: "rubble", label: "Make rubble" },
+              { value: "oops", label: "Oops" },
+            ]}
+            onChange={(v) => setTweak('headline', v)}
+          />
+          <TweakText label="Body" value={t.heroBody} onChange={(v) => setTweak('heroBody', v)} />
+          <TweakToggle label="Show badge row" value={t.showBadges} onChange={(v) => setTweak('showBadges', v)} />
+
+          <TweakSection label="Features" />
+          <TweakText label="Eyebrow" value={t.eyebrowFeatures} onChange={(v) => setTweak('eyebrowFeatures', v)} />
+          <TweakText label="Section heading" value={t.featHeading} onChange={(v) => setTweak('featHeading', v)} />
+          <TweakText label="Card 01 title" value={t.feat01Title} onChange={(v) => setTweak('feat01Title', v)} />
+          <TweakText label="Card 01 body" value={t.feat01Body} onChange={(v) => setTweak('feat01Body', v)} />
+          <TweakText label="Card 02 title" value={t.feat02Title} onChange={(v) => setTweak('feat02Title', v)} />
+          <TweakText label="Card 02 body" value={t.feat02Body} onChange={(v) => setTweak('feat02Body', v)} />
+          <TweakText label="Card 03 title" value={t.feat03Title} onChange={(v) => setTweak('feat03Title', v)} />
+          <TweakText label="Card 03 body" value={t.feat03Body} onChange={(v) => setTweak('feat03Body', v)} />
+          <TweakText label="Card 01 image" value={t.feat01Img} placeholder="assets/..." onChange={(v) => setTweak('feat01Img', v)} />
+          <TweakText label="Card 02 image" value={t.feat02Img} placeholder="assets/..." onChange={(v) => setTweak('feat02Img', v)} />
+          <TweakText label="Card 03 image" value={t.feat03Img} placeholder="assets/..." onChange={(v) => setTweak('feat03Img', v)} />
+
+          <TweakSection label="Screenshots" />
+          <TweakText label="Eyebrow" value={t.eyebrowScreenshots} onChange={(v) => setTweak('eyebrowScreenshots', v)} />
+          <TweakText label="Section heading" value={t.shotsHeading} onChange={(v) => setTweak('shotsHeading', v)} />
+
+          <TweakSection label="Studio" />
+          <TweakText label="Eyebrow" value={t.eyebrowStudio} onChange={(v) => setTweak('eyebrowStudio', v)} />
+          <TweakText label="Section heading" value={t.studioHeading} onChange={(v) => setTweak('studioHeading', v)} />
+          <TweakText label="Intro para 1" value={t.studioBody1} onChange={(v) => setTweak('studioBody1', v)} />
+          <TweakText label="Intro para 2" value={t.studioBody2} onChange={(v) => setTweak('studioBody2', v)} />
+          <TweakText label="Bio — Aaron" value={t.bio01} onChange={(v) => setTweak('bio01', v)} />
+          <TweakText label="Bio — Dave" value={t.bio02} onChange={(v) => setTweak('bio02', v)} />
+          <TweakText label="Bio — Derek" value={t.bio03} onChange={(v) => setTweak('bio03', v)} />
+
+          <TweakSection label="Social" />
+          <TweakText label="Eyebrow" value={t.eyebrowSocial} onChange={(v) => setTweak('eyebrowSocial', v)} />
+          <TweakText label="Section heading" value={t.socialHeading} onChange={(v) => setTweak('socialHeading', v)} />
+          <TweakText label="Body" value={t.socialBody} onChange={(v) => setTweak('socialBody', v)} />
+
+          <TweakSection label="Newsletter" />
+          <TweakText label="Eyebrow" value={t.eyebrowNewsletter} onChange={(v) => setTweak('eyebrowNewsletter', v)} />
+          <TweakText label="Headline" value={t.newsletterHeading} onChange={(v) => setTweak('newsletterHeading', v)} />
+          <TweakText label="Body" value={t.newsletterBody} onChange={(v) => setTweak('newsletterBody', v)} />
+
+          <TweakSection label="Links" />
+          <TweakText label="Discord URL" value={t.discordHref} placeholder="https://discord.gg/..." onChange={(v) => setTweak('discordHref', v)} />
+        </TweaksPanel>
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+</script>
+</body>
+</html>
