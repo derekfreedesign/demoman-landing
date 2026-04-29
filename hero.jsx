@@ -1,7 +1,7 @@
 /* eslint-disable */
 // TopNav + Hero. Discord-first; wishlist locked as "Coming Soon".
 
-function TopNav({ discordHref }) {
+function TopNav({ discordHref, btnDiscordNav }) {
   const links = [
     { label: "The Game", href: "#game" },
     { label: "Studio", href: "#studio" },
@@ -42,7 +42,7 @@ function TopNav({ discordHref }) {
         Pre-Alpha · 2026
       </span>
       <Btn size="sm" variant="discord" href={discordHref} target="_blank" iconLeft={<DiscordIcon size={16} />}>
-        Join Discord
+        {btnDiscordNav}
       </Btn>
     </nav>
   );
@@ -54,7 +54,7 @@ const HEADLINES = {
   oops: { line1: "OOPS,", line2: "I BROKE", line3: "THE WORLD." },
 };
 
-function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
+function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll, btnDiscordNav, btnDiscordHero, btnWishlist }) {
   const h = HEADLINES[headline] || HEADLINES.blow;
   return (
     <section id="top" style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid var(--dm-border)" }}>
@@ -108,10 +108,10 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
 
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
           <Btn variant="discord" size="lg" href={discordHref} target="_blank" iconLeft={<DiscordIcon size={22} />} icon="→">
-            Join the Discord
+            {btnDiscordHero}
           </Btn>
           <Btn variant="locked" size="lg" disabled iconLeft={<LockIcon size={18} />}>
-            Wishlist · Coming Soon
+            {btnWishlist}
           </Btn>
         </div>
 
@@ -120,7 +120,8 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
             <Badge variant="pulse"><PulseDot color="var(--dm-red-hi)" /> Pre-Alpha</Badge>
             <Badge variant="ghost">Single-Player</Badge>
             <Badge variant="ghost">Steam · PC</Badge>
-            <Badge variant="out">Made in Unreal</Badge>
+            <Badge variant="ghost">Great on Steam Deck</Badge>
+            <Badge variant="ghost">Unreal Engine 5</Badge>
           </div>
         )}
 
@@ -130,7 +131,7 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
           display: "inline-flex", alignItems: "center", gap: 12,
         }}>
           <span style={{ width: 24, height: 1, background: "var(--dm-fg-3)" }} />
-          Scroll for the screenshots and the small print
+          {heroScroll}
           <span style={{ color: "var(--dm-yellow)" }}>↓</span>
         </div>
       </div>
