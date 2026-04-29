@@ -41,6 +41,10 @@
     "showBadges": true,
     "discordHref": "https://discord.gg/2FH6Yvuctz",
     "eyebrowHero": "// In Development · Wishlist Soon",
+    "heroScroll": "Scroll for a bunch of stuff that isn't ready yet",
+    "btnDiscordNav": "JOIN US ON DISCORD",
+    "btnDiscordHero": "JOIN US ON DISCORD",
+    "btnWishlist": "WISHLIST ON STEAM SOON",
     "eyebrowFeatures": "// Gameplay Features",
     "eyebrowScreenshots": "// Gameplay Footage",
     "eyebrowStudio": "// Who we are",
@@ -59,11 +63,11 @@
     "feat03Img": "",
     "shotsHeading": "Is there something before pre-alpha? these are that",
     "studioHeading": "Unframed Games",
-    "studioBody1": " is an indie studio founded by a couple veterans and one guy who really doesn't know what he's doing. But he got to build the website. And hes also the most handsome.",
+    "studioBody1": "We're is an indie studio founded by a couple veterans and one guy who really doesn't know what he's doing. But he got to build the website. And hes also the most handsome.",
     "studioBody2": "",
     "bio01": "Systems architect. Some you need, some you don't.",
     "bio02": "World-building and scope creep, personified.",
-    "bio03": "Idiot marketing and UI savant. Without the savant",
+    "bio03": "Idiot marketing and UI savant. Without the savant.",
     "socialHeading": "Watch us ruin it in real time",
     "socialBody": "Devlogs, slow-mo demolition clips, and the occasional bug that's so dumb we shipped it. One handle everywhere:",
     "newsletterHeading": "Feel like sharing?",
@@ -75,13 +79,17 @@
 
     return (
       <div>
-        <TopNav discordHref={t.discordHref} />
+        <TopNav discordHref={t.discordHref} btnDiscordNav={t.btnDiscordNav} />
         <Hero
           headline={t.headline}
           showBadges={t.showBadges}
           discordHref={t.discordHref}
           heroBody={t.heroBody}
           eyebrow={t.eyebrowHero}
+          heroScroll={t.heroScroll}
+          btnDiscordNav={t.btnDiscordNav}
+          btnDiscordHero={t.btnDiscordHero}
+          btnWishlist={t.btnWishlist}
         />
         <FeatureRow
           eyebrow={t.eyebrowFeatures}
@@ -121,6 +129,10 @@
         <TweaksPanel title="Copy">
           <TweakSection label="Hero" />
           <TweakText label="Eyebrow" value={t.eyebrowHero} onChange={(v) => setTweak('eyebrowHero', v)} />
+          <TweakText label="Scroll hint" value={t.heroScroll} onChange={(v) => setTweak('heroScroll', v)} />
+          <TweakText label="Button — Nav Discord" value={t.btnDiscordNav} onChange={(v) => setTweak('btnDiscordNav', v)} />
+          <TweakText label="Button — Hero Discord" value={t.btnDiscordHero} onChange={(v) => setTweak('btnDiscordHero', v)} />
+          <TweakText label="Button — Wishlist" value={t.btnWishlist} onChange={(v) => setTweak('btnWishlist', v)} />
           <TweakRadio
             label="Headline"
             value={t.headline}
