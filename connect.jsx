@@ -9,21 +9,22 @@ const SOCIALS = [
 ];
 
 function SocialRow({ eyebrow, socialHeading, socialBody }) {
+  const mob = useIsMobile();
   return (
-    <section id="follow" style={{ background: "var(--dm-bg-1)", padding: "100px 40px", borderTop: "1px solid var(--dm-border)", borderBottom: "1px solid var(--dm-border)" }}>
+    <section id="follow" style={{ background: "var(--dm-bg-1)", padding: mob ? "60px 20px" : "100px 40px", borderTop: "1px solid var(--dm-border)", borderBottom: "1px solid var(--dm-border)" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ marginBottom: 48 }}>
+        <div style={{ marginBottom: mob ? 32 : 48 }}>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <SubDisplay size={24} style={{ marginTop: 28, marginBottom: 24 }}>
+          <SubDisplay size={mob ? 18 : 24} style={{ marginTop: mob ? 20 : 28, marginBottom: mob ? 16 : 24 }}>
             {socialHeading}
           </SubDisplay>
-          <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, lineHeight: 1.7, color: "var(--dm-fg-2)", margin: 0, maxWidth: 760 }}>
+          <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: mob ? 14 : 16, lineHeight: 1.7, color: "var(--dm-fg-2)", margin: 0, maxWidth: 760 }}>
             {socialBody}
             <code style={{ marginLeft: 8, padding: "2px 8px", background: "var(--dm-bg-3)", border: "1px solid var(--dm-border)", color: "var(--dm-yellow)", borderRadius: 2 }}>@unframedgames</code>
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "repeat(4, 1fr)", gap: mob ? 12 : 16 }}>
           {SOCIALS.map(({ label, href, handle, Icon }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{
               background: "var(--dm-bg-2)",
@@ -160,12 +161,13 @@ function Newsletter({ eyebrow, newsletterHeading, newsletterBody }) {
 }
 
 function Footer() {
+  const mob = useIsMobile();
   return (
     <>
       <HazardTape />
-      <footer style={{ background: "var(--dm-bg-0)", padding: "60px 40px 40px" }}>
+      <footer style={{ background: "var(--dm-bg-0)", padding: mob ? "40px 20px 24px" : "60px 40px 40px" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40, marginBottom: 48 }}>
+          <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr 1fr" : "repeat(4, 1fr)", gap: mob ? 32 : 40, marginBottom: mob ? 32 : 48 }}>
             <div>
               <a href="mailto:marketing@unframedgames.com" style={{ display: "inline-block", borderBottom: "none" }}>
                 <img

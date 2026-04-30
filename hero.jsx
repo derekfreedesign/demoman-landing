@@ -2,26 +2,29 @@
 // TopNav + Hero. Discord-first; wishlist locked as "Coming Soon".
 
 function TopNav({ discordHref }) {
+  const mob = useIsMobile();
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 50,
-      display: "flex", alignItems: "center", gap: 24,
+      display: "flex", alignItems: "center", gap: mob ? 12 : 24,
       background: "rgba(11,13,16,0.92)",
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
       borderBottom: "1px solid var(--dm-border)",
-      padding: "14px 40px",
+      padding: mob ? "12px 16px" : "14px 40px",
     }}>
       <a href="mailto:marketing@unframedgames.com" style={{ display: "flex", alignItems: "center", borderBottom: "none" }}>
-        <img src="assets/UFG_Logo_White.png" alt="Unframed Games" style={{ height: 30, display: "block" }} />
+        <img src="assets/UFG_Logo_White.png" alt="Unframed Games" style={{ height: mob ? 22 : 30, display: "block" }} />
       </a>
       <div style={{ flex: 1 }} />
-      <span style={{ fontFamily: '"JetBrains Mono", monospace', fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--dm-fg-3)", display: "inline-flex", alignItems: "center", gap: 8 }}>
-        <PulseDot color="var(--dm-red)" />
-        Pre-Alpha · 2026
-      </span>
+      {!mob && (
+        <span style={{ fontFamily: '"JetBrains Mono", monospace', fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--dm-fg-3)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <PulseDot color="var(--dm-red)" />
+          Pre-Alpha · 2026
+        </span>
+      )}
       <Btn size="sm" variant="discord" href={discordHref} target="_blank" iconLeft={<DiscordIcon size={16} />}>
-        Join Discord
+        {mob ? "Discord" : "Join Discord"}
       </Btn>
     </nav>
   );
@@ -34,6 +37,7 @@ const HEADLINES = {
 };
 
 function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll }) {
+  const mob = useIsMobile();
   const h = HEADLINES[headline] || HEADLINES.blow;
   return (
     <section id="top" style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid var(--dm-border)" }}>
@@ -59,7 +63,7 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll
         pointerEvents: "none",
       }} />
 
-      <div style={{ position: "relative", padding: "100px 40px 80px", maxWidth: 1280, margin: "0 auto" }}>
+      <div style={{ position: "relative", padding: mob ? "52px 20px 44px" : "100px 40px 80px", maxWidth: 1280, margin: "0 auto" }}>
         <Eyebrow>{eyebrow}</Eyebrow>
 
         <img
@@ -70,7 +74,7 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll
             marginTop: 12,
             marginBottom: 0,
             width: "100%",
-            maxWidth: 576,
+            maxWidth: mob ? 300 : 576,
             height: "auto",
             imageRendering: "pixelated",
             filter: "drop-shadow(0 6px 0 #14181D) drop-shadow(0 12px 32px rgba(0,0,0,0.6))",
@@ -78,26 +82,26 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll
         />
 
         <p style={{
-          fontFamily: '"JetBrains Mono", monospace', fontSize: 18, lineHeight: 1.6,
-          color: "var(--dm-fg-1)", maxWidth: 620, marginTop: 16, marginBottom: 36,
+          fontFamily: '"JetBrains Mono", monospace', fontSize: mob ? 14 : 18, lineHeight: 1.6,
+          color: "var(--dm-fg-1)", maxWidth: 620, marginTop: 16, marginBottom: mob ? 24 : 36,
           fontWeight: 500,
         }}>
           {heroBody}
         </p>
 
-        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-          <Btn variant="discord" size="lg" href={discordHref} target="_blank" iconLeft={<DiscordIcon size={22} />} icon="→">
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <Btn variant="discord" size={mob ? "md" : "lg"} href={discordHref} target="_blank" iconLeft={<DiscordIcon size={mob ? 16 : 22} />} icon="→">
             Join the Discord
           </Btn>
-          <Btn variant="locked" size="lg" disabled iconLeft={<LockIcon size={18} />}>
-            Wishlist · Coming Soon
+          <Btn variant="locked" size={mob ? "md" : "lg"} disabled iconLeft={<LockIcon size={mob ? 14 : 18} />}>
+            Wishlist on Steam Soon
           </Btn>
         </div>
 
         {showBadges && (
-          <div style={{ display: "flex", gap: 10, marginTop: 36, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 8, marginTop: mob ? 24 : 36, flexWrap: "wrap" }}>
             <Badge variant="pulse"><PulseDot color="var(--dm-red-hi)" /> Pre-Alpha</Badge>
-            <Badge variant="ghost">Single-Player</Badge>
+            <Badge variant="ghost">Survival Shooter</Badge>
             <Badge variant="ghost">Steam · PC</Badge>
             <Badge variant="ghost">Made in Unreal</Badge>
             <Badge variant="ghost">Great on Steam Deck</Badge>
@@ -105,7 +109,7 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll
         )}
 
         <div style={{
-          marginTop: 56, fontFamily: '"JetBrains Mono", monospace',
+          marginTop: mob ? 36 : 56, fontFamily: '"JetBrains Mono", monospace',
           fontSize: 11, color: "var(--dm-fg-3)", letterSpacing: "0.16em", textTransform: "uppercase",
           display: "inline-flex", alignItems: "center", gap: 12,
         }}>
