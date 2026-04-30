@@ -167,7 +167,7 @@ function Footer() {
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40, marginBottom: 48 }}>
             <div>
-              <a href="#studio" style={{ display: "inline-block", borderBottom: "none" }}>
+              <a href="mailto:marketing@unframedgames.com" style={{ display: "inline-block", borderBottom: "none" }}>
                 <img
                   src="assets/UFG_Logo_White.png"
                   alt="Unframed Games"

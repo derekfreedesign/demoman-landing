@@ -2,12 +2,6 @@
 // TopNav + Hero. Discord-first; wishlist locked as "Coming Soon".
 
 function TopNav({ discordHref }) {
-  const links = [
-    { label: "The Game", href: "#game" },
-    { label: "Studio", href: "#studio" },
-    { label: "Follow", href: "#follow" },
-    { label: "Newsletter", href: "#newsletter" },
-  ];
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 50,
@@ -18,25 +12,10 @@ function TopNav({ discordHref }) {
       borderBottom: "1px solid var(--dm-border)",
       padding: "14px 40px",
     }}>
-      <a href="#top" style={{ display: "flex", alignItems: "center", borderBottom: "none" }}>
-        <Wordmark size={30} />
+      <a href="mailto:marketing@unframedgames.com" style={{ display: "flex", alignItems: "center", borderBottom: "none" }}>
+        <img src="assets/UFG_Logo_White.png" alt="Unframed Games" style={{ height: 30, display: "block" }} />
       </a>
-      <div style={{ display: "flex", gap: 22, flex: 1, marginLeft: 24 }}>
-        {links.map((l) => (
-          <a key={l.label} href={l.href} style={{
-            fontFamily: '"JetBrains Mono", monospace', fontWeight: 700, fontSize: 12,
-            letterSpacing: "0.14em", textTransform: "uppercase",
-            color: "var(--dm-fg-2)",
-            textDecoration: "none",
-            borderBottom: "2px solid transparent",
-            paddingBottom: 4,
-            transition: "color 80ms linear, border-color 80ms linear",
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = "var(--dm-yellow)"; e.currentTarget.style.borderBottomColor = "var(--dm-yellow)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = "var(--dm-fg-2)"; e.currentTarget.style.borderBottomColor = "transparent"; }}
-          >{l.label}</a>
-        ))}
-      </div>
+      <div style={{ flex: 1 }} />
       <span style={{ fontFamily: '"JetBrains Mono", monospace', fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--dm-fg-3)", display: "inline-flex", alignItems: "center", gap: 8 }}>
         <PulseDot color="var(--dm-red)" />
         Pre-Alpha · 2026
@@ -54,7 +33,7 @@ const HEADLINES = {
   oops: { line1: "OOPS,", line2: "I BROKE", line3: "THE WORLD." },
 };
 
-function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
+function Hero({ headline, showBadges, discordHref, heroBody, eyebrow, heroScroll }) {
   const h = HEADLINES[headline] || HEADLINES.blow;
   return (
     <section id="top" style={{ position: "relative", overflow: "hidden", borderBottom: "1px solid var(--dm-border)" }}>
@@ -120,7 +99,8 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
             <Badge variant="pulse"><PulseDot color="var(--dm-red-hi)" /> Pre-Alpha</Badge>
             <Badge variant="ghost">Single-Player</Badge>
             <Badge variant="ghost">Steam · PC</Badge>
-            <Badge variant="out">Made in Unreal</Badge>
+            <Badge variant="ghost">Made in Unreal</Badge>
+            <Badge variant="ghost">Great on Steam Deck</Badge>
           </div>
         )}
 
@@ -130,7 +110,7 @@ function Hero({ headline, showBadges, discordHref, heroBody, eyebrow }) {
           display: "inline-flex", alignItems: "center", gap: 12,
         }}>
           <span style={{ width: 24, height: 1, background: "var(--dm-fg-3)" }} />
-          Scroll for the screenshots and the small print
+          {heroScroll}
           <span style={{ color: "var(--dm-yellow)" }}>↓</span>
         </div>
       </div>
