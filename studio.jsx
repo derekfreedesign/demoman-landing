@@ -63,7 +63,7 @@ function StudioAbout({ eyebrow, studioHeading, studioBody1, studioBody2, bio01, 
         </SubDisplay>
         <div style={{ maxWidth: 760 }}>
           <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, lineHeight: 1.7, color: "var(--dm-fg-2)", margin: 0 }}>
-            <strong style={{ color: "var(--dm-fg-1)" }}>Unframed Games</strong>{studioBody1}
+            {studioBody1}
           </p>
           <p style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 14, lineHeight: 1.7, color: "var(--dm-fg-3)", marginTop: 14, marginBottom: 0 }}>
             {studioBody2}
